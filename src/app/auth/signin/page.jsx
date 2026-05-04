@@ -1,59 +1,12 @@
-'use client'
-import { authClient } from "@/src/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import React from 'react';
 
-const SineUpPage = () => {
-
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const userData = Object.fromEntries(formData.entries());
-        console.log(userData);
-
-        const { data, error } = await authClient.signUp.email({
-            name: userData.name, // required
-            email: userData.email, // required
-            password: userData.password
-        })
-
-        console.log("sine up res", data, error);
-
-
-
-
-
-            // // Convert FormData to plain object
-            // formData.forEach((value, key) => {
-            //     data[key] = value.toString();
-            // });
-            // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
-        };
-
-
-        return (
-            <div className="mt-10 max-w-7xl mx-auto">
-                <h1>Please Sine-Up</h1>
-
-                <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
-                    <TextField
-                        isRequired
-                        name="name"
-                        validate={(value) => {
-                            if (value.length < 3) {
-                                return "Name must be at least 3 characters";
-                            }
-                            return null;
-                        }}
-                    >
-                        <Label>Name</Label>
-                        <Input name="name" placeholder="Enter Your Name" />
-                        <FieldError />
-                    </TextField>
-
-
+const SignInPage = () => {
+    return (
+        <div>
+            <h1>Please Sign In</h1>
+            <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
                     <TextField
                         isRequired
                         name="email"
@@ -102,8 +55,8 @@ const SineUpPage = () => {
                         </Button>
                     </div>
                 </Form>
-            </div>
-        );
-    };
+        </div>
+    );
+};
 
-    export default SineUpPage;
+export default SignInPage;
