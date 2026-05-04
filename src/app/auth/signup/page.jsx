@@ -34,11 +34,6 @@ const SineUpPage = () => {
 
 
 
-        // // Convert FormData to plain object
-        // formData.forEach((value, key) => {
-        //     data[key] = value.toString();
-        // });
-        // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
     };
 
 

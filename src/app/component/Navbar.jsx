@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from "@heroui/react";
 import React from 'react';
 import { signOut, useSession } from '@/src/lib/auth-client';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
@@ -25,13 +26,14 @@ const Navbar = () => {
                     <div>
 
                         <ul className="flex items-center gap-4">
-                            <li><Link href="#">Features</Link></li>
+                            <li><Link href="/dashboard">Dashboard</Link></li>
+                            <li><Link href="/about">About</Link></li>
                             <li><Link href="#">Pricing</Link></li>
                         </ul>
                     </div>
 
                     <div className='flex items-center gap-5'>
-                        {user ? <div className='flex items-center gap-5'><p>Welcome {user.name}</p> <Button onClick={() => signOut()} variant="primary" >Sign Out</Button> </div>
+                        {user ? <div className='flex items-center gap-5'><p>Welcome {user.name}</p> <Button onClick={() => [signOut() , toast.success("sine Out Successfully")]} variant="primary" >Sign Out</Button> </div>
                             :
                             <div className='flex items-center gap-5'>
                                 <Link href={"/auth/signin"}><Button variant="primary" >Sign In</Button></Link>
